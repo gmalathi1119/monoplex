@@ -1,0 +1,5 @@
+load("@gazelle//:def.bzl", "gazelle")
+
+# gazelle:prefix github.com/your-org/monorepo/go
+# gazelle:build_file_name BUILD.bazel
+gazelle(name = "gazelle")
