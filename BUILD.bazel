@@ -1,5 +1,21 @@
-load("@gazelle//:def.bzl", "gazelle")
+cc_library(
+    name = "greeter",
+    srcs = ["greeter.cc"],
+    hdrs = ["greeter.h"],
+    visibility = ["//visibility:public"],
+)
 
-# gazelle:prefix github.com/your-org/monorepo/go
-# gazelle:build_file_name BUILD.bazel
-gazelle(name = "gazelle")
+cc_binary(
+    name = "hello",
+    srcs = ["main.cc"],
+    deps = [":greeter"],
+)
+
+cc_test(
+    name = "greeter_test",
+    srcs = ["greeter_test.cc"],
+    deps = [
+        ":greeter",
+        "@googletest//:gtest_main",
+    ],
+)
